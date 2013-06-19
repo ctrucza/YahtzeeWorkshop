@@ -14,6 +14,8 @@ namespace Yahtzee
             if (isRunning)
                 throw new InvalidOperationException(GameExceptions.CannotAddPlayerToRunningGame);
             players.Add(joe);
+
+            joe.Scorecard = new Dictionary<string, int>(); // TODO: step one: Game has a private property for scorecard template, step two: this template is injected/loaded
         }
 
         public IEnumerable<Player> Players

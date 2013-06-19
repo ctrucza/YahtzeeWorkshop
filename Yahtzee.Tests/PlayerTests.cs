@@ -11,9 +11,10 @@ namespace Yahtzee.Tests
     public class PlayerTests
     {
         [Test]
-        public void Play_completes_player()
+        public void Score_completes_player()
         {
             Player player = new Player();
+            player.Scorecard = new Dictionary<string, int>();
             player.Score(new Dice(), "Ones");
             Assert.IsTrue(player.IsCompleted);
         }
@@ -29,6 +30,7 @@ namespace Yahtzee.Tests
         public void Score_scores_something()
         {
             Player joe = new Player();
+            joe.Scorecard = new Dictionary<string, int>();
             joe.Score(new Dice(), "ONES");
             Assert.IsTrue(joe.HasScoreFor("ONES"));
 

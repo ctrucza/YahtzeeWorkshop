@@ -5,7 +5,7 @@ namespace Yahtzee
     public class Player
     {
         private readonly string name;
-        private Dictionary<string, int> scoreCard = new Dictionary<string, int>(); 
+        public Dictionary<string, int> Scorecard = null; //new Dictionary<string, int>(); 
 
         public Player(string name = "")
         {
@@ -21,13 +21,13 @@ namespace Yahtzee
 
         public void Score(Dice dice, string selection)
         {
-            scoreCard[selection] = 42;
+            Scorecard[selection] = 42;
             IsCompleted = true;
         }
 
         public bool HasScoreFor(string selection)
         {
-            return scoreCard[selection] > 0;
+            return Scorecard[selection] > 0;
         }
     }
 }

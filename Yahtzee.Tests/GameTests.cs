@@ -125,5 +125,13 @@ namespace Yahtzee.Tests
             var exception = Assert.Throws<InvalidOperationException>(() => game.MoveToNextPlayer());
             Assert.AreEqual(GameExceptions.CannotMoveWhenGameIsNotStarted, exception.Message);
         }
+
+        [Test]
+        public void Add_Sets_Scorecard_for_player()
+        {
+            Player joe = new Player();
+            game.Add(joe);
+            Assert.IsNotNull(joe.Scorecard);
+        }
     }
 }
