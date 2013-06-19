@@ -12,8 +12,21 @@ namespace YahtzeeApp
         static void Main(string[] args)
         {
             Game game = new Game();
-            game.Add(new Player("Joe"));
-            game.Add(new Player("Jane"));
+            Player joe = new Player("Joe");
+            game.Add(joe);
+            Player jane = new Player("Jane");
+            game.Add(jane);
+
+            joe.Scorecard = new Dictionary<string, int>
+                {
+                    {"ONES", 0}, 
+                    {"TWOS", 0}
+                };
+            jane.Scorecard = new Dictionary<string, int>
+                {
+                    {"ONES", 0}, 
+                    {"TWOS", 0}
+                };
 
             game.Start();
             Console.WriteLine("game started");
@@ -23,7 +36,7 @@ namespace YahtzeeApp
                 //Dice dice = ThrowDiceThreeTimes();
                 //Selection selection = PickSelection();
 
-                game.CurrentPlayer.Score(new Dice(), "Ones");
+                game.CurrentPlayer.Score(new Dice(), "ONES");
 
                 game.MoveToNextPlayer();
                 Console.WriteLine(game.CurrentPlayer + " is playing");

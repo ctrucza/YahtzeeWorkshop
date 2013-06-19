@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Yahtzee
 {
@@ -6,6 +7,7 @@ namespace Yahtzee
     {
         private readonly string name;
         public Dictionary<string, int> Scorecard = null; //new Dictionary<string, int>(); 
+        private int scores = 0;
 
         public Player(string name = "")
         {
@@ -21,8 +23,15 @@ namespace Yahtzee
 
         public void Score(Dice dice, string selection)
         {
+            if (!Scorecard.ContainsKey(selection))
+                throw new InvalidOperationException();
+
+            if (HasScoreFor(selection))
+                throw new InvalidOperationException();
+
             Scorecard[selection] = 42;
-            IsCompleted = true;
+            scores++;
+            IsCompleted = (scores == Scorecard.Count);
         }
 
         public bool HasScoreFor(string selection)
