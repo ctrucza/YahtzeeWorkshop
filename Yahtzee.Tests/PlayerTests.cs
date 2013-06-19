@@ -14,7 +14,7 @@ namespace Yahtzee.Tests
         public void Play_completes_player()
         {
             Player player = new Player();
-            player.Play();
+            player.Score(new Dice(), "Ones");
             Assert.IsTrue(player.IsCompleted);
         }
 
@@ -23,6 +23,15 @@ namespace Yahtzee.Tests
         {
             Player player = new Player("Joe");
             Assert.AreEqual("Joe", player.ToString());
+        }
+
+        [Test]
+        public void Score_scores_something()
+        {
+            Player joe = new Player();
+            joe.Score(new Dice(), "ONES");
+            Assert.IsTrue(joe.HasScoreFor("ONES"));
+
         }
     }
 }

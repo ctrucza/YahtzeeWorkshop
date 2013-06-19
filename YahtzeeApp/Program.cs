@@ -20,9 +20,11 @@ namespace YahtzeeApp
 
             while (!game.IsOver)
             {
-                // do stuff: Play current player, move to next player
-                
-                game.CurrentPlayer.Play();
+                //Dice dice = ThrowDiceThreeTimes();
+                //Selection selection = PickSelection();
+
+                game.CurrentPlayer.Score(new Dice(), "Ones");
+
                 game.MoveToNextPlayer();
                 Console.WriteLine(game.CurrentPlayer + " is playing");
             }
