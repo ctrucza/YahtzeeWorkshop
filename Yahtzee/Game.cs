@@ -9,13 +9,13 @@ namespace Yahtzee
         private readonly List<Player> players = new List<Player>();
         private bool isRunning = false;
 
-        public void Add(Player joe)
+        public void Add(Player player)
         {
             if (isRunning)
                 throw new InvalidOperationException(GameExceptions.CannotAddPlayerToRunningGame);
-            players.Add(joe);
+            players.Add(player);
 
-            joe.Scorecard = new Dictionary<string, int>(); // TODO: step one: Game has a private property for scorecard template, step two: this template is injected/loaded
+            player.Scorecard = new Dictionary<string, int>(); // TODO: step one: Game has a private property for scorecard template, step two: this template is injected/loaded
         }
 
         public IEnumerable<Player> Players
